@@ -20,6 +20,9 @@ Has separate db ids..
 
 
 class Tenant:
-    def __init__(self, id="", name=""):
+    def __init__(self, id="", name="", userName="", password="", email=""):
         self.name = name
         self.id = id
+        self.userName = userName
+        self.password = password
+        self.email = email

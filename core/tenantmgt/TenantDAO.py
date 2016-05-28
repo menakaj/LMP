@@ -28,7 +28,10 @@ class TenantDAO:
             DatabaseCollections.tenantCollectionName.insert_one(
                     {
                         "tenantId": tenant.id,
-                        "tenantName": tenant.name
+                        "tenantName": tenant.name,
+                        "tenantUserName": tenant.userName,
+                        "password": tenant.password,
+                        "email": tenant.email
                     }
             )
             return "Successfully created tenant"
@@ -40,7 +43,10 @@ class TenantDAO:
                         "tenentId": tenentId
                     },
                     {
-                        "tenantName": tenant.name
+                        "tenantName": tenant.name,
+                        "tenantUserName": tenant.userName,
+                        "password": tenant.password,
+                        "email": tenant.email
                     }
             )
             return "Updated successfully."

@@ -25,6 +25,9 @@ class DeviceDAO:
         Create a new device and store in database
         :param device: Device object
         """
+        if DatabaseCollections.deviceCollectionName.find({"deviceId": device.id}).count() > 0:
+            return "Already Enrolled"
+
         DatabaseCollections.deviceCollectionName.insert_one(
                 {
                     "deviceId": device.id,
@@ -82,11 +85,51 @@ class DeviceDAO:
             return device
 
     def getDevices(self, owner):
+        """
+        Return the list of the all devices enrolled.
+        :param owner: Tenant Id
+        :return:
+        """
         deviceList = []
         try:
-            devices = DatabaseCollections.deviceCollectionName.find({"deviceOwner": owner})
+            devices = DatabaseCollections.deviceCollectionName.find({"deviceOrg": owner})
             for device in devices:
-                dev = Device(device["id"], device["name"], device["type"], device["owner"], device["org"])
+                dev = Device(device["deviceId"], device["deviceName"], device["deviceType"], device["deviceOwner"],
+                             device["deviceOrg"])
+                deviceList.append(dev)
+            return deviceList
+        except IOError:
+            return "Finding devices failed."
+
+    def getAppleDevices(self, deviceOwner):
+        """
+        Get all the apple devices enrolled for a tenant.
+        :param deviceOwner: tenantID
+        :return:
+        """
+        deviceList = []
+        try:
+            devices = DatabaseCollections.deviceCollectionName.find({"deviceOrg": deviceOwner, "deviceType": "Apple"})
+            for device in devices:
+                dev = Device(device["deviceId"], device["deviceName"], device["deviceType"], device["deviceOwner"],
+                             device["deviceOrg"])
+                deviceList.append(dev)
+            return deviceList
+        except IOError:
+            return "Finding devices failed."
+
+    def getWindowsDevices(self, deviceOwner):
+        """
+        Get all the windows devices enrolled for a tenant.
+        :param deviceOwner: tenantID
+        :return:
+        """
+        deviceList = []
+        try:
+            devices = DatabaseCollections.deviceCollectionName.find({"deviceOrg": deviceOwner, "deviceType": "Windows"})
+            for device in devices:
+                dev = Device(device["deviceId"], device["deviceName"], device["deviceType"], device["deviceOwner"],
+                             device["deviceOrg"])
                 deviceList.append(dev)
             return deviceList
         except IOError:
