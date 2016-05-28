@@ -101,7 +101,7 @@ class DeviceDAO:
         except IOError:
             return "Finding devices failed."
 
-    def getAppleDevices(self, deviceOwner):
+    def getAppleDevices(self, deviceOrg):
         """
         Get all the apple devices enrolled for a tenant.
         :param deviceOwner: tenantID
@@ -109,7 +109,7 @@ class DeviceDAO:
         """
         deviceList = []
         try:
-            devices = DatabaseCollections.deviceCollectionName.find({"deviceOrg": deviceOwner, "deviceType": "Apple"})
+            devices = DatabaseCollections.deviceCollectionName.find({"deviceOrg": deviceOrg, "deviceType": "Apple"})
             for device in devices:
                 dev = Device(device["deviceId"], device["deviceName"], device["deviceType"], device["deviceOwner"],
                              device["deviceOrg"])
@@ -118,7 +118,7 @@ class DeviceDAO:
         except IOError:
             return "Finding devices failed."
 
-    def getWindowsDevices(self, deviceOwner):
+    def getWindowsDevices(self, deviceOrg):
         """
         Get all the windows devices enrolled for a tenant.
         :param deviceOwner: tenantID
@@ -126,7 +126,7 @@ class DeviceDAO:
         """
         deviceList = []
         try:
-            devices = DatabaseCollections.deviceCollectionName.find({"deviceOrg": deviceOwner, "deviceType": "Windows"})
+            devices = DatabaseCollections.deviceCollectionName.find({"deviceOrg": deviceOrg, "deviceType": "Windows"})
             for device in devices:
                 dev = Device(device["deviceId"], device["deviceName"], device["deviceType"], device["deviceOwner"],
                              device["deviceOrg"])
