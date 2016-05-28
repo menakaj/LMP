@@ -2,18 +2,70 @@
 <!-- top tiles -->
 <div class="row tile_count">
 
-<div class="col-md-3 col-sm-4 col-xs-6 tile_stats_count">
-  <span class="count_top"><i class="fa fa-apple" aria-hidden="true"></i> Apple Devices Enrolled</span>
-  <div class="count">150</div>
-  <span class="count_bottom"><i class="green">100 </i>  online</span>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="col-md-6 col-sm-6 col-xs-6 tile_stats_count">
+          <span class="count_top"><i class="fa fa-apple" aria-hidden="true"></i> Apple Devices Enrolled</span>
+          <div class="count">150</div>
+          <span class="count_bottom"><i class="green">100 </i>  online</span>
+        </div>
+
+        <div class="col-md-6 col-sm-6 col-xs-6 tile_stats_count">
+          <span class="count_top"><i class="fa fa-windows" aria-hidden="true"></i> Windows Devices Enrolled</span>
+          <div class="count">100</div>
+          <span class="count_bottom"><i class="green">80 </i> online</span>
+        </div>
+    </div>
+
+
+   <!-- Pie Chart for Current users -->
+    <div class="col-md-4 col-sm-6 col-xs-12">
+      <div class="x_panel tile fixed_height_320 overflow_hidden">
+        <div class="x_title">
+          <h2>Device Usage</h2>
+          <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+          <table class="" style="width:100%">
+            <tr>
+              <th style="width:37%;">
+              </th>
+              <th>
+                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+                  <p class="">Device</p>
+                </div>
+                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                  <p class="">Progress</p>
+                </div>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <canvas id="canvas1" height="140" width="140" style="margin: 15px 10px 10px 0"></canvas>
+              </td>
+              <td>
+                <table class="tile_info">
+                  <tr>
+                    <td>
+                      <p><i class="fa fa-square blue"></i>Apple </p>
+                    </td>
+                    <td>60%</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p><i class="fa fa-square green"></i>Windows </p>
+                    </td>
+                    <td>40%</td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+
 </div>
 
-<div class="col-md-3 col-sm-4 col-xs-6 tile_stats_count">
-  <span class="count_top"><i class="fa fa-windows" aria-hidden="true"></i> Windows Devices Enrolled</span>
-  <div class="count">100</div>
-  <span class="count_bottom"><i class="green">80 </i> online</span>
-</div>
-
-</div>
 <!-- /top tiles -->
 
