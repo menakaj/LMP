@@ -4,7 +4,6 @@ from M2Crypto import SMIME, X509, BIO
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 path_to_certificates = BASE_DIR + '/LMP/certificates/'
-context = (path_to_certificates + 'Server.crt', path_to_certificates + 'Server.key')
 
 # configure the app
 app.config.from_object(__name__)
