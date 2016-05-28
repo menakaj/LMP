@@ -2,13 +2,17 @@ import os
 from app import *
 from M2Crypto import SMIME, X509, BIO
 
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+path_to_certificates = BASE_DIR + '/LMP/certificates/'
 
+# configure the app
 app.config.from_object(__name__)
 app.secret_key = os.urandom(24)
 app.debug = True
 app.root = os.path.abspath(os.path.dirname(__file__))
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-path_to_certificates = BASE_DIR + '/LMP/certificates/'
+#app.ssl_context = context
+
+
 
 # Set up some smime objects to verify signed messages coming from devices
 sm_obj = SMIME.SMIME()
