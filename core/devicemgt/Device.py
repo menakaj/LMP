@@ -12,15 +12,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-class messageBody:
-    def __init__(self, message="",
-                 password="",
-                 url="",
-                 destAddress="",
-                 applicationID=""):
-        self.applicationID = applicationID
-        self.destAddress = destAddress
-        self.url = url
-        self.password = password
-        self.message = message
 
+class Device:
+    def __init__(self,
+                 deviceId = "",
+                 deviceName = "",
+                 deviceType = "",
+                 deviceOwner = "",
+                 deviceOrg = ""):
+        """
+        :param deviceName: Name of the device
+        :param deviceType: Device Type Windows/ Mac
+        :param deviceOwner: Employee name
+        :param deviceOrg: Tenant ID
+        """
+        self.id = deviceId
+        self.name = deviceName
+        self.type = deviceType
+        self.owner = deviceOwner
+        self.org = deviceOrg

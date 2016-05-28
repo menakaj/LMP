@@ -12,15 +12,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-class messageBody:
-    def __init__(self, message="",
-                 password="",
-                 url="",
-                 destAddress="",
-                 applicationID=""):
-        self.applicationID = applicationID
-        self.destAddress = destAddress
-        self.url = url
-        self.password = password
-        self.message = message
+"""
+Tenant is an isolated entity in the same server instance.
+Has separate db ids..
 
+"""
+
+
+class Tenant:
+    def __init__(self, id="", name="", userName="", password="", email=""):
+        self.name = name
+        self.id = id
+        self.userName = userName
+        self.password = password
+        self.email = email
