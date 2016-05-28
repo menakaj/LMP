@@ -11,16 +11,13 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+from core.dbmgt.getConnection import *
 
-class messageBody:
-    def __init__(self, message="",
-                 password="",
-                 url="",
-                 destAddress="",
-                 applicationID=""):
-        self.applicationID = applicationID
-        self.destAddress = destAddress
-        self.url = url
-        self.password = password
-        self.message = message
 
+class DatabaseCollections:
+    def __init__(self):
+        pass
+
+    userCollectionName = getDatabase().Users
+    tenantCollectionName = getDatabase().Tenant
+    deviceCollectionName = getDatabase().Devices
