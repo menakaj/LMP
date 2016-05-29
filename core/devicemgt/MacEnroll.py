@@ -1,6 +1,8 @@
 import os
 
 from __init__ import *
+from core.devicemgt.Device import Device
+from core.devicemgt.DeviceDAO import DeviceDAO
 
 
 class enroll_profile(Resource):
@@ -30,7 +32,11 @@ class lmp_ca(Resource):
 
 class do_mdm_server(Resource):
     def put(self):
-        print request
+        print "Server"
+        id, name, owerName, type, tenantEmail = "d1", "AngelHackAir", "Saman", "Apple", "info@abc.com"
+        t = Device(id, name, owerName, type, tenantEmail)
+        dao = DeviceDAO()
+        dao.createDevice(t)
 
 class do_mdm_checkin(Resource):
     def put(self):
