@@ -11,9 +11,10 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
 from __init__ import *
 import socket
-import config
+from config import *
 app = Flask(__name__)
 api = Api(app)
 
@@ -28,5 +29,5 @@ if __name__ == '__main__':
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     s.connect(('8.8.8.8', 0))
     ipAddress = s.getsockname()[0]
-    context = (config.path_to_certificates + 'Server.crt', config.path_to_certificates + 'Server.key')
+    context = (path_to_certificates + 'Server.crt', path_to_certificates + 'Server.key')
     app.run(host=ipAddress, port=8080, ssl_context=context)
