@@ -15,7 +15,7 @@ from __init__ import *
 
 app = Flask(__name__)
 api = Api(app)
-Session(app)
+sess = Session()
 
 api.add_resource(Login_Page, '/login')
 api.add_resource(LoginConfirmation, '/confirm-login')
