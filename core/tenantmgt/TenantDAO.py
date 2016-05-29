@@ -60,9 +60,9 @@ class TenantDAO:
                 }
         )
 
-    def getTenant(self, tenantId):
+    def getTenant(self, email):
         return DatabaseCollections.tenantCollectionName.find_one(
                 {
-                    "tenantId": tenantId
+                    "email": email
                 }
         )
