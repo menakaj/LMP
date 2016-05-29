@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login Form</title>
+
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='internal/css/normalize.css') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='internal/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='internal/css/custom.css') }}">
+
+    <script src="{{ url_for('static', filename='internal/js/prefixfree.min.js') }}"></script>
+
+
+</head>
+
+<body>
+    <div class="row">
+        <div class="col-md-6 col-sm-12">
+            <img src="{{ url_for('static', filename='internal/images/B2.png') }}" width="100%">
+        </div>
+        <div class=" col-md-5 col-sm-12" style="padding : 100px ; padding-top:150px ">
+            <div class="login form-horizontal">
+                <a href="/ca" class="btn btn-large btn-primary col-md-12 col-sm-12" style="margin-bottom: 10px;">Download CA Certificate</a>
+                <a href="/Enroll" class="btn btn-large btn-primary col-md-12 col-sm-12" style="margin-bottom: 15px;">Download Enrollment Profile</a>
+
+                <p style="color: #d7d7d7; font-size: 1.2em;"><b>You have to </b><br>
+                1. Download & install CA Certificate<br>
+                    2. Download & Install Profile on your PC <br>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='internal/js/index.js') }}"></script>
+</body>
+
+</html>

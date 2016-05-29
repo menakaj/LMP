@@ -72,13 +72,13 @@ class DeviceDAO:
         except IOError:
             return "Device Deletion Failed"
 
-    def getDevice(self, deviceId):
+    def getDevice(self, deviceId, email):
         """
         Get the device details
         :param deviceId: Id of the device
         :return:
         """
-        device = DatabaseCollections.deviceCollectionName.find({"deviceId": deviceId})
+        device = DatabaseCollections.deviceCollectionName.find({"deviceId": deviceId, "deviceOrg": email})
         if device is None:
             return None
         else:

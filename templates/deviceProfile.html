@@ -1,0 +1,237 @@
+{% extends 'index.html' %}
+
+
+{% block content %}
+<div class="" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Device Profile</h3>
+            </div>
+
+            <div class="title_right">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search By Device ID...">
+                        <span class="input-group-btn">
+                      <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Device Report <small>Activity report</small></h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+
+                        <div class="col-md-3 col-sm-3 col-xs-12 profile_left">
+
+                            <div class="profile_img">
+
+                                <!-- end of image cropping -->
+                                <div id="crop-avatar">
+                                    <!-- Current avatar -->
+                                    {% if device_data.deviceType == 'Apple' %}
+                                        <img class="img-responsive avatar-view" src="{{ url_for('static', filename='images/apple_logo.png') }}" alt="Avatar" title="Change the avatar">
+                                    {% else %}
+                                        <img class="img-responsive avatar-view" src="{{ url_for('static', filename='images/windows_logo.png') }}" alt="Avatar" title="Change the avatar">
+                                    {% endif %}
+
+                                    <!-- Cropping modal -->
+                                    <div class="modal fade" id="avatar-modal" aria-hidden="true" aria-labelledby="avatar-modal-label" role="dialog" tabindex="-1">
+                                        <div class="modal-dialog modal-lg">
+                                            <div class="modal-content">
+                                                <form class="avatar-form" action="crop.php" enctype="multipart/form-data" method="post">
+                                                    <div class="modal-header">
+                                                        <button class="close" data-dismiss="modal" type="button">&times;</button>
+                                                        <h4 class="modal-title" id="avatar-modal-label">Change Avatar</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="avatar-body">
+
+                                                            <!-- Upload image and data -->
+                                                            <div class="avatar-upload">
+                                                                <input class="avatar-src" name="avatar_src" type="hidden">
+                                                                <input class="avatar-data" name="avatar_data" type="hidden">
+                                                                <label for="avatarInput">Local upload</label>
+                                                                <input class="avatar-input" id="avatarInput" name="avatar_file" type="file">
+                                                            </div>
+
+                                                            <!-- Crop and preview -->
+                                                            <div class="row">
+                                                                <div class="col-md-9">
+                                                                    <div class="avatar-wrapper"></div>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <div class="avatar-preview preview-lg"></div>
+                                                                    <div class="avatar-preview preview-md"></div>
+                                                                    <div class="avatar-preview preview-sm"></div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row avatar-btns">
+                                                                <div class="col-md-9">
+                                                                    <div class="btn-group">
+                                                                        <button class="btn btn-primary" data-method="rotate" data-option="-90" type="button" title="Rotate -90 degrees">Rotate Left</button>
+                                                                        <button class="btn btn-primary" data-method="rotate" data-option="-15" type="button">-15deg</button>
+                                                                        <button class="btn btn-primary" data-method="rotate" data-option="-30" type="button">-30deg</button>
+                                                                        <button class="btn btn-primary" data-method="rotate" data-option="-45" type="button">-45deg</button>
+                                                                    </div>
+                                                                    <div class="btn-group">
+                                                                        <button class="btn btn-primary" data-method="rotate" data-option="90" type="button" title="Rotate 90 degrees">Rotate Right</button>
+                                                                        <button class="btn btn-primary" data-method="rotate" data-option="15" type="button">15deg</button>
+                                                                        <button class="btn btn-primary" data-method="rotate" data-option="30" type="button">30deg</button>
+                                                                        <button class="btn btn-primary" data-method="rotate" data-option="45" type="button">45deg</button>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <button class="btn btn-primary btn-block avatar-save" type="submit">Done</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- <div class="modal-footer">
+                                                    <button class="btn btn-default" data-dismiss="modal" type="button">Close</button>
+                                                  </div> -->
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.modal -->
+
+                                    <!-- Loading state -->
+                                    <div class="loading" aria-label="Loading" role="img" tabindex="-1"></div>
+                                </div>
+                                <!-- end of image cropping -->
+
+                            </div>
+                            <h3>{{ device_data.deviceName }}</h3>
+
+                            <ul class="list-unstyled user_data">
+                                <li><i class="fa fa-user" n style="padding:3px" aria-hidden="true"></i> {{ device_data.deviceOwner }}
+                                </li>
+                                <li><i class="fa fa-laptop" style="padding:3px" aria-hidden="true"></i> {{ device_data.deviceId }}
+                                </li>
+                                <hr>
+                                <a class="btn btn-success col-sm-5 pull-left"><i class="fa fa-edit m-right-xs " style="padding:3px"></i>Edit</a>
+                                <a class="btn btn-danger col-sm-5 pull-right" href="/delete-device/{{ device_data.deviceId }}" ><i class="fa fa-trash m-right-xs "  style="padding:3px"></i>Delete</a>
+                            </ul>
+                        </div>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+
+                            <div class="profile_title">
+                                <div class="col-md-6">
+                                    <h2>Device Data Usage Report</h2>
+                                </div>
+                            </div>
+                            <!-- start of user-activity-graph -->
+                            <div id="graph_bar" style="width:100%; height:280px;"></div>
+                            <!-- end of user-activity-graph -->
+                            <div Style="padding-top:17px"><a class="btn btn-xs btn-info col-sm-2 pull-right " style="margin-left:10px;margin-right:20px">Lock Device</a>
+                                <a class="btn btn-xs btn-info col-sm-2 pull-right" style="margin-left:10px">Wipe Divice</a>
+                                <a class="btn btn-xs btn-info col-sm-2 pull-right" style="margin-left:10px">Shut Down</a>
+                                <a class="btn btn-xs btn-info col-sm-2 pull-right" style="margin-left:10px">Data Off</a>
+                                <a class="btn btn-xs btn-info col-sm-2 pull-right" style="margin-left:10px;">App Lock</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+<!-- jQuery -->
+<script src="{{ url_for('static', filename='vendors/jquery/dist/jquery.min.js') }}"></script>
+<!-- Bootstrap -->
+<script src="{{ url_for('static', filename='vendors/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+<!-- FastClick -->
+<script src="{{ url_for('static', filename='vendors/fastclick/lib/fastclick.js') }}"></script>
+<!-- NProgress -->
+<script src="{{ url_for('static', filename='vendors/nprogress/nprogress.js') }}"></script>
+<!-- morris.js -->
+<script src="{{ url_for('static', filename='vendors/raphael/raphael.min.js') }}"></script>
+<script src="{{ url_for('static', filename='vendors/morris.js/morris.min.js') }}"></script>
+<!-- bootstrap-progressbar -->
+<script src="{{ url_for('static', filename='vendors/bootstrap-progressbar/bootstrap-progressbar.min.js') }}"></script>
+<!-- bootstrap-daterangepicker -->
+<script src="{{ url_for('static', filename='js/moment/moment.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/datepicker/daterangepicker.js') }}"></script>
+
+<!-- Custom Theme Scripts -->
+<script src="{{ url_for('static', filename='build/js/custom.min.js') }}"></script>
+
+<script>
+    $(function () {
+        Morris.Bar({
+            element: 'graph_bar',
+            data: [
+                {
+                    "period": "Jan",
+                    "Hours worked": 80
+                    },
+                {
+                    "period": "Feb",
+                    "Hours worked": 125
+                    },
+                {
+                    "period": "Mar",
+                    "Hours worked": 176
+                    },
+                {
+                    "period": "Apr",
+                    "Hours worked": 224
+                    },
+                {
+                    "period": "May",
+                    "Hours worked": 265
+                    },
+                {
+                    "period": "Jun",
+                    "Hours worked": 314
+                    },
+                {
+                    "period": "Jul",
+                    "Hours worked": 347
+                    },
+                {
+                    "period": "Aug",
+                    "Hours worked": 287
+                    },
+                {
+                    "period": "Sep",
+                    "Hours worked": 240
+                    },
+                {
+                    "period": "Oct",
+                    "Hours worked": 211
+                    }
+          ],
+            xkey: 'period',
+            hideHover: 'auto',
+            barColors: ['#26B99A', '#34495E', '#ACADAC', '#3498DB'],
+            ykeys: ['Hours worked', 'sorned'],
+            labels: ['GB Used', ''],
+            xLabelAngle: 60,
+            resize: true
+        });
+
+        $MENU_TOGGLE.on('click', function () {
+            $(window).resize();
+        });
+    });
+</script>
+
+
+{% endblock %}
