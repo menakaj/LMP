@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login Form</title>
+
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='internal/css/normalize.css') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='internal/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='internal/css/custom.css') }}">
+
+    <script src="{{ url_for('static', filename='internal/js/prefixfree.min.js') }}"></script>
+
+
+</head>
+
+<body>
+    <div class="row">
+        <div class="col-lg-6 col-sm-12">
+            <img src="{{ url_for('static', filename='internal/images/B2.png') }}" width="100%">
+        </div>
+        <div class=" col-lg-6 col-sm-12 " style="padding-left:450px ;padding-top:30px;padding-right:30px ">
+            <button type="submit" class="btn btn-primary btn-block btn-large" style="min-width:120px">Sign me up</button>
+
+        </div>
+        <div class=" col-lg-5 col-sm-12" style="padding : 100px ; padding-top:150px ">
+            <div class="login body ">
+                <h1>Login</h1>
+                <form method="post" action="/confirm-login" enctype="multipart/form-data">
+                    <input type="text" placeholder="Company Name" required="required" name="companyName" />
+                    <input type="email"  placeholder="Email" required="required" name="email" />
+                    <input type="password"  placeholder="Password" required="required" name="password" />
+                    <button type="submit" class="btn btn-primary btn-block btn-large">Let me in.</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='internal/js/index.js') }}"></script>
+</body>
+
+</html>

@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 import os
-from app import *
+from run_config import *
 from M2Crypto import SMIME, X509, BIO
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
