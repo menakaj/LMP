@@ -27,7 +27,7 @@ class TenantDAO:
         else:
             DatabaseCollections.tenantCollectionName.insert_one(
                     {
-                        "tenantId": tenant.id,
+                        "tenantId": tenant.email,
                         "tenantName": tenant.name,
                         "tenantUserName": tenant.userName,
                         "password": tenant.password,
@@ -53,10 +53,10 @@ class TenantDAO:
         else:
             return "No matching found"
 
-    def deleteTenant(self, tenantId):
+    def deleteTenant(self, email):
         DatabaseCollections.tenantCollectionName.remove(
                 {
-                    "tenantId": tenantId
+                    "email": email
                 }
         )
 
