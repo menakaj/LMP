@@ -1,5 +1,6 @@
 from flask import *
 from flask_restful import *
 from flask_api import *
-# congif file added
+
+# config file added
 import config
