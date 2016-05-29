@@ -33,10 +33,10 @@ class lmp_ca(Resource):
 class do_mdm_server(Resource):
     def put(self):
         print "Server"
-        id, name, owerName, type, tenantEmail = "d1", "AngelHackAir", "Saman", "Apple", "info@abc.com"
-        t = Device(id, name, owerName, type, tenantEmail)
-        dao = DeviceDAO()
-        dao.createDevice(t)
+        # id, name, owerName, type, tenantEmail = "d1", "AngelHackAir", "Saman", "Apple", "info@abc.com"
+        # t = Device(id, name, owerName, type, tenantEmail)
+        # dao = DeviceDAO()
+        # dao.createDevice(t)
 
 class do_mdm_checkin(Resource):
     def put(self):
