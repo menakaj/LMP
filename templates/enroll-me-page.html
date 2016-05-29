@@ -22,17 +22,17 @@
             <img src="{{ url_for('static', filename='internal/images/B2.png') }}" width="100%">
         </div>
         <div class=" col-lg-6 col-sm-12 " style="padding-left:450px ;padding-top:30px;padding-right:30px ">
-            <a href="/enroll-client-device" class="btn btn-primary btn-block btn-large" style="min-width:120px" target="_blank">Enroll Me</a>
+            <a class="btn btn-primary btn-block btn-large" style="min-width:120px">Sign me in</a>
             <a class="btn btn-primary btn-block btn-large" style="min-width:120px">Sign me up</a>
 
         </div>
         <div class=" col-lg-5 col-sm-12" style="padding : 100px ; padding-top:150px ">
             <div class="login body ">
-                <h1>Login</h1>
-                <form method="post" action="/confirm-login" enctype="multipart/form-data">
+                <h1>Enroll Device</h1>
+                <form method="get" action="/enroll-client-device-download" enctype="multipart/form-data">
                     <input type="email"  placeholder="Email" required="required" name="email" />
                     <input type="password"  placeholder="Password" required="required" name="password" />
-                    <button type="submit" class="btn btn-primary btn-block btn-large">Let me in.</button>
+                    <button type="submit" class="btn btn-primary btn-block btn-large">Enroll Me</button>
                 </form>
             </div>
         </div>
